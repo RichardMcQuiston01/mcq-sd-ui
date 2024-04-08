@@ -1,15 +1,19 @@
+import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
-import { HttpModule } from '@nestjs/axios';
+
+import { ApiModule } from './modules';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.env'
+      envFilePath: '.env',
     }),
-    HttpModule
+    HttpModule,
+    ApiModule,
   ],
   controllers: [
     AppController
